@@ -1,12 +1,14 @@
 const authToken = (req, res, next) => {
-  const { token } = req.headers;
-  if (token === undefined || token === '') {
+  const { authorization } = req.headers;
+  if (authorization === undefined || authorization === '') {
     return res.status(401).json({ message: 'Token não encontrado' });
   }
-  if (token.length < 16 || typeof token !== 'string') {
+  if (authorization.length < 16 || typeof authorization !== 'string') {
     return res.status(401).json({ message: 'Token inválido' });
   }
   next();
 };
 
 module.exports = authToken;
+
+// 025f87e174de219b
