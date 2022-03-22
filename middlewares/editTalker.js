@@ -4,7 +4,6 @@ async function editTalker(req, res) {
   const { name, age, talk } = req.body;
   const { id } = req.params;
   const talker = { name, age, id: Number(id), talk };
-  console.log(talker);
   if (!talk) {
     return res.status(400).json({
       message: 'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios',
