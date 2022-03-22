@@ -4,6 +4,7 @@ const getTalker = require('./middlewares/getTalker');
 const getTalkerById = require('./middlewares/getTalkerById');
 const login = require('./middlewares/login');
 const addTalker = require('./middlewares/addTalker');
+const editTalker = require('./middlewares/editTalker');
 
 // autenticadores
 const authEmail = require('./middlewares/authEmail');
@@ -24,6 +25,7 @@ app.get('/talker', getTalker);
 app.get('/talker/:id', getTalkerById);
 app.post('/login', authEmail, authPW, login);
 app.post('/talker', authToken, authName, authAge, authDate, authRate, addTalker);
+app.put('/talker/:id', authToken, authName, authAge, authDate, authRate, editTalker);
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (_request, response) => {

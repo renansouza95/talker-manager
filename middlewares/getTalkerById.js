@@ -5,7 +5,7 @@ async function getTalkerById(req, res) {
   try {
     const data = await fs.readFile('./talker.json', 'utf-8');
     const obj = JSON.parse(data);
-    const talker = obj.find((e) => e.id === parseInt(id, 2));
+    const talker = obj.find((e) => e.id === Number(id));
     if (!talker) return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
     res.status(200).json(talker);
   } catch (err) {
