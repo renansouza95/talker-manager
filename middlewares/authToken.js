@@ -10,5 +10,3 @@ const authToken = (req, res, next) => {
 };
 
 module.exports = authToken;
-
-// 025f87e174de219b

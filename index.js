@@ -6,6 +6,7 @@ const login = require('./middlewares/login');
 const addTalker = require('./middlewares/addTalker');
 const editTalker = require('./middlewares/editTalker');
 const deleteTalker = require('./middlewares/deleteTalker');
+const searchTalker = require('./middlewares/searchTalker');
 
 // autenticadores
 const authEmail = require('./middlewares/authEmail');
@@ -15,6 +16,7 @@ const authName = require('./middlewares/authName');
 const authAge = require('./middlewares/authAge');
 const authDate = require('./middlewares/authDate');
 const authRate = require('./middlewares/authRate');
+const authSearch = require('./middlewares/authSearch');
 
 const app = express();
 app.use(bodyParser.json());
@@ -22,8 +24,9 @@ app.use(bodyParser.json());
 const HTTP_OK_STATUS = 200;
 const PORT = '3000';
 
-app.get('/talker', getTalker);
+app.get('/talker/search', authToken, authSearch, searchTalker);
 app.get('/talker/:id', getTalkerById);
+app.get('/talker', getTalker);
 app.post('/login', authEmail, authPW, login);
 app.post('/talker', authToken, authName, authAge, authDate, authRate, addTalker);
 app.put('/talker/:id', authToken, authName, authAge, authDate, authRate, editTalker);
