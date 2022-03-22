@@ -1,3 +1,5 @@
+// como utilizar o fs https://acervolima.com/como-ler-e-escrever-um-arquivo-json-usando-node-js/
+
 const fs = require('fs').promises;
 
 async function getTalker(req, res) {
